@@ -1,0 +1,280 @@
+
+/*CORE UI*/
+body{
+	font-family: 'Raleway', sans-serif;
+	background: rgba(78, 152, 236, 0.1);
+	margin: 0 !important;
+	padding:  0 !important;
+}
+
+.core-nav{
+	display: flex;
+	width: 100%;
+	background: #fff;
+}
+nav img{
+	width: 100px;
+	margin: 20px 40px;
+	display: inline;
+}
+.core-nav .search-icon{
+	margin: 15px auto;
+}
+.second-nav{
+	display: flex;
+	background: rgba(78, 152, 236, 0.12);
+	margin: 0;
+	padding: 15px 20px;
+}
+.second-nav ul{
+	list-style-type: none;
+	
+}
+.second-nav ul li{
+	display: inline;
+	margin: 10px 25px;
+}
+.second-nav ul li span{
+	background: rgba(0,0,0,0.4);
+	padding: 5px 8px;
+	font-size: 13px;
+	color: white;
+	border-radius: 50%;
+	margin: 0 7px;
+	opacity: .4;
+}
+.second-nav  div{
+	margin: 0 auto;
+}
+.create-button{
+	background: blue;
+	padding: 15px 40px;
+	border-radius: 30px;
+	cursor: pointer;
+	margin: 0 0 0 110px;
+}
+main{
+	display: flex;
+	margin: 0 auto;
+}
+aside{
+	width: 20%;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	background: white;
+	min-height: 80vh;
+}
+
+aside .list{
+	border-bottom: 1.2px solid rgba(78, 152, 236, 0.12);
+	padding: 10px 25px;
+}
+aside .heading-list{
+	font-size: 1.1rem;
+}
+.list{
+	cursor: pointer;
+}
+aside .con-prev{
+	font-size: .8rem;
+	text-align: justify;
+	
+}
+.tag, .time, .base-action{
+	margin: 0 10px;
+}
+aside .base .tag  {
+	width: 30%;
+	padding: 5px 10px;
+	background: rgba(78, 152, 236, 0.12);
+	border-radius: 20px;
+	font-size: .8rem;
+	font-weight: bold;
+}
+aside .base .time  {
+	font-size: .8rem;
+	width: 30%;
+	opacity: .4;
+}
+aside .base .base-action  {
+		position: relative;
+
+}
+aside .base .base-action ul{
+	display: none;
+	position: absolute;
+	background: white;
+	right: 0;
+	/*width: 50%;*/
+	list-style-type: none;
+	cursor: pointer;
+	box-shadow: 1px 1px 2px blue;
+	padding: 10px;
+}
+.base-action ul li{
+	cursor: pointer;
+	padding: 3px;
+}
+
+
+section{
+	width: 60%;
+	min-height: 80vh;
+	background: white;
+	margin: 20px 0 0 30px ;
+	padding: 20px 40px;
+}
+section h1{
+	font-size: 2rem;
+	text-transform: capitalize;
+}
+section p{
+	font-size: 1.1rem;
+}
+
+/*MODAL FOR ADDING CONTENT*/
+/*LOGIN AND SIGN UP MODAL*/
+
+/* The Modal (background) */
+#add-content {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,.3);
+  transition: 4s;
+  
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px; /* Could be more or less, depending on screen size */
+  text-align: center;
+}
+
+.modal-content header h3{
+	color: blue;
+	font-size: 1rem;
+	text-align: left;
+}
+.modal-content header p{
+	font-size: .7rem;
+	color: rgba(0,0,0,0.6);
+	font-weight: 600;
+	text-align: left;
+}
+.google-signin{
+	text-align: center;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid blue;
+	border-radius: 20px;
+	padding: 10px 20px;
+	text-decoration: none;
+	background: rgba(0,0,0,0.02);
+	font-size: .8rem;
+	transition: .3s;
+}
+.google-signin:hover{
+	color: #fff;
+	background: blue;
+}
+header > .header-span{
+	text-align: left !important;
+	margin-bottom: 20px !important;
+}
+header > span:before{
+	content: "";
+	border-top: 2px solid black;
+}
+header > span:after{
+	content: "";
+	border-top: 2px solid black;
+}
+
+.modal-content form{
+	margin: 15px auto;
+}
+.modal-content form input{
+	padding: 15px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 10px;
+	width: 100%;
+	margin: 15px auto;
+	background: rgba(0,0,0,0.03);
+	outline: none;
+	transition: .2s;
+}
+.modal-content form{
+	text-align: left;	
+}
+.modal-content form div #note{
+	margin: 15px auto;
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 200px;
+	border-radius: 20px;
+	background: rgba(0,0,0,0.03);
+	
+}
+.modal-content form div label{
+	font-weight: bold;	
+	}
+.modal-content form input:focus{
+	background: rgba(0,0,0,0.01);
+	
+}
+.modal-content form input::placeholder{
+	opacity: 0.5;
+}
+
+form button{
+	text-align: center;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid blue;
+	border-radius: 20px;
+	padding: 10px 20px;
+	text-decoration: none;
+	background: blue;
+	color: #fff;
+	width: 100%;
+	font-size: .9rem;
+	cursor: pointer;
+	transition: .3s;
+}
+form button:hover{
+	color: blue;
+	background: #fff;
+}
+.modal-content p{
+	font-size: .9rem;
+}
+.modal-content p a{
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+/* The Close Button */
+.close, .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

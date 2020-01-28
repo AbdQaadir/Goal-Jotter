@@ -1,0 +1,126 @@
+<DOCTYPE Html5/>
+<html>
+<head>
+	<title>Wix mentorship task</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="animate.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+	<nav>
+		<img src="./assets/logo.png">
+		<ul>
+			<li id="login-btn">Login</li>
+			<li id="signup-btn">Sign Up</li>
+		</ul>
+	</nav>	
+</header>
+
+<main>
+	<section id="main">
+		<div class="col-1">
+			<h1 class="main-h1">You can't really manage time, but you can take small steps that count on a long run.</h1>
+
+			<ul>
+				<li>Track your daily activities</li>
+				<li>Save important notes or code snippets you're likely to reuse</li>
+				<li>Keep a diary of your daily activities</li>
+			</ul>
+
+			<div>
+				<button class="g-s-button">Get Started</button>
+			</div>
+		</div>
+
+		<div class="col-2">
+			<div class="sss-1"> 
+				<div class="main-img main-img-1">
+					<img src="./assets/img-1.png" alt="main image showing fitness">
+					<span>track your TODOS status</span>
+				</div>
+			</div>
+			
+
+			<div class="sss">			
+				<div class="main-img main-img-2">
+					<img src="./assets/img-2.png" alt="main image showing fitness">
+					<span>jot down reusable code snippets</span>
+				</div>
+				<div class="main-img main-img-3">
+					<img src="./assets/img-3.png" alt="main image showing fitness">
+					<span>jot down your daily activities</span>
+				</div>
+			</div>			
+		</div>
+
+	</section>
+	<section>
+
+	<!-- Trigger/Open The Modal -->
+	<!-- The Modal -->
+	<div id="myLoginModal" class="modal animated fadeIn fast">
+
+	  <!-- Modal content for Login-->
+	 	<div class="modal-content" id="login">
+		    <span class="Loginclose">&times;</span>
+		    <header>
+		    	<div class="modal-logo">
+		    		<img src="./assets/logo.png">
+		    	</div>
+			    <h3>Hello <br> Welcome back!</h3>
+			    <p>Enter your personal details to login in</p>
+			    <a class="google-signin" href="">Sign in with Google</a>
+			    <span class="header-span">OR</span>
+			 </header>
+		    <form action="" method="post" id="login-form">
+		    	<div>
+		    		<input type="text" id="username" name="usernmae" placeholder="Username">
+		    		<input type="password" id="password" name="password" placeholder="Password">
+		    	</div>
+		    	<button>Sign in</button>
+		    </form>
+		    <p>Don't have an account yet? <a href="" id="signup-form-btn">Sign up here</a></p>
+	  	</div>
+	</div>
+
+	<!-- Modal content for Sign UP -->
+	<div id="mySignupModal" class="modal animated fadeIn fast">
+	 	<div class="modal-content" id="signup">
+		    <span class="SignupClose">&times;</span>
+		    <header>
+		    	<div class="modal-logo">
+		    		<img src="./assets/logo.png">
+		    	</div>
+			    <h3>Create <br> your account!</h3>
+			    <p>Enter your personal details to start your journey today</p>
+			    <a class="google-signin" href="">Sign in with Google</a>
+			    <span class="header-span">OR</span>
+			 </header>
+		    <form action="" method="post" id="signup-form">
+		    	<div>
+		    		<input type="text" id="name" name="name" placeholder="Name">
+		    		<input type="text" id="username" name="username" placeholder="Username">
+		    		<input type="email" id="email" name="email" placeholder="Email">
+		    		<input type="password" id="password" name="password" placeholder="Password">
+		    	</div>
+		    	<button>Sign up</button>
+		    </form>
+		    <p>Already have an account? <a href="" id="login-form-btn">Sign in here</a></p>
+	  	</div>
+	</div>
+
+	</section>
+</main>
+
+
+
+
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+
+
+

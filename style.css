@@ -1,0 +1,274 @@
+body{
+	font-family: 'Raleway', sans-serif;
+}
+nav{
+	display: inline;
+}
+
+nav img{
+	width: 100px;
+	margin: 20px 40px;
+	display: inline;
+}
+nav ul{
+display: inline;
+position: absolute;
+right: 50px;
+top: 10px;
+border-radius: 20px;
+padding: 15px 0;
+background: blue;
+}
+nav ul li{
+	display: inline;
+	font-size: 1.1rem;
+	color: white;
+}
+nav ul li:hover{
+	background: black;
+}
+#login-btn, #signup-btn{
+	background: blue;
+	padding: 15px 20px;
+	margin: 0 !important;
+	cursor: pointer;
+	transition: .8s;
+}
+#login-btn{
+	border-top-left-radius: 19px;
+	border-bottom-left-radius: 19px;
+}
+#signup-btn{
+	border-top-right-radius: 19px;
+	border-bottom-right-radius: 19px;
+}
+#login-btn:hover, #signup-btn:hover{
+	background: #fff;
+	color: blue;
+}
+/*MAIN*/
+#main{
+	display: flex;
+}
+.col-1{
+	width: 40%;
+	margin: 0 40px;
+
+}
+
+.main-h1{
+	font-size: 3rem;
+	padding: 5px 15px;
+}
+.col-1 ul{
+	margin-left: none !important;
+	padding-left: none !important;
+}
+.col-1 ul li{
+	list-style-type: none;
+	font-size: 1.2rem;
+	padding: 5px 0 !important;
+	margin-left: 0 !important;
+}
+
+.g-s-button{
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.2rem;
+	padding: 15px 25px;
+	border-radius: 25px;
+	background: blue;
+	margin: 20px 0;
+	outline: none;
+	cursor: pointer;
+	color: #fff;
+	transition: .9s;
+}
+.g-s-button:hover{
+	background: #fff;
+	color: blue;
+}
+
+/*COLUMN 2*/
+
+.col-2{
+	width: 60%;
+}
+.sss-1{
+	margin: 0 auto;
+}
+.sss{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.main-img {
+	margin: 30px auto;
+	width: 300px;
+	background: #fff;
+	border: 2px solid none;
+	border-radius: 7px;
+	height: 250px;
+	box-shadow: 1px 1px 5px #888888;
+	text-align: center;
+}
+.main-img-1{	
+	display: block;
+	text-align: center !important;
+}
+.main-img-2, .main-img-3{
+	margin-right: 50px;
+}
+.main-img img{
+	padding: 0 !important;
+	margin: 0 !important;
+	width: 100%;
+	height: 80%;
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+}
+
+.main-img > span{
+	display: block;
+	font-size: 1rem;
+	color: black;
+	padding: 10px 0;
+}
+
+
+
+
+/*LOGIN AND SIGN UP MODAL*/
+
+/* The Modal (background) */
+#myLoginModal, #mySignupModal {
+  display: none; /* Hidden by default */
+  position: fixed; /ss* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,.3);
+  transition: 4s;
+  
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px; /* Could be more or less, depending on screen size */
+  text-align: center;
+}
+.modal-logo{
+	margin: 15px auto;
+	text-align: center;
+}
+.modal-content header h3{
+	color: blue;
+	font-size: 1rem;
+	text-align: left;
+}
+.modal-content header p{
+	font-size: .7rem;
+	color: rgba(0,0,0,0.6);
+	font-weight: 600;
+	text-align: left;
+}
+.google-signin{
+	text-align: center;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid blue;
+	border-radius: 20px;
+	padding: 10px 20px;
+	text-decoration: none;
+	background: rgba(0,0,0,0.02);
+	font-size: .8rem;
+	transition: .3s;
+}
+.google-signin:hover{
+	color: #fff;
+	background: blue;
+}
+header > .header-span{
+	text-align: left !important;
+	margin-bottom: 20px !important;
+}
+header > span:before{
+	content: "";
+	border-top: 2px solid black;
+}
+header > span:after{
+	content: "";
+	border-top: 2px solid black;
+}
+
+.modal-content form{
+	margin: 15px auto;
+}
+.modal-content form input{
+	padding: 15px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 10px;
+	width: 100%;
+	margin: 10px auto;
+	background: rgba(0,0,0,0.03);
+	outline: none;
+	transition: .2s;
+}
+.modal-content form input:focus{
+	background: rgba(0,0,0,0.01);
+	
+}
+.modal-content form input::placeholder{
+	opacity: 0.5;
+}
+
+form button{
+	text-align: center;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid blue;
+	border-radius: 20px;
+	padding: 10px 20px;
+	text-decoration: none;
+	background: blue;
+	color: #fff;
+	width: 100%;
+	font-size: .9rem;
+	cursor: pointer;
+	transition: .3s;
+}
+form button:hover{
+	color: blue;
+	background: #fff;
+}
+.modal-content p{
+	font-size: .9rem;
+}
+.modal-content p a{
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+/* The Close Button */
+.Loginclose, .SignupClose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.Loginclose:hover, .SignupClose:hover,
+.Loginclose:focus, .SignupClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+

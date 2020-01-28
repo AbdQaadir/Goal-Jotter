@@ -1,0 +1,90 @@
+<DOCTYPE Html5/>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="animate.min.css">
+	<link rel="stylesheet" type="text/css" href="core.css">
+</head>
+
+<body>
+<header>
+	<nav class="core-nav">
+		<img src="./assets/logo.png">
+		<div class="search-icon">
+			<i class="fa fa-search"></i>
+			<input type="text" id="search-notes">
+		</div>
+	</nav>	
+	<div class="second-nav">
+		<ul>
+			<li>Notes<span class="notes-counter">20</span></li>
+			<li>Todos<span class="todos-counter">5</span></li>
+			<li>Events<span class="events-counter">3</span></li>
+			<li>Archives<span class="archives-counter">2</span></li>
+			<li>Settings</li>
+		</ul>
+
+		<div >
+			<p class="create-button">Create Note</p>
+		</div>
+
+		<!-- MODAL FOR ADDING CONTENT -->
+		<div id="add-content" class="modal animated fadeIn fast">
+	 	<div class="modal-content">
+		    <span class="close">&times;</span>
+		    <header>
+			    <h3>Write your note</h3>
+			 </header>
+		    <form action="" method="post" id="signup-form">
+		    	<div>
+		    		<label for="title">Title</label>
+		    		<input type="text" id="title" name="title" placeholder="Note title">
+		    		<label for="tag">Tag</label>
+		    		<input type="text" id="tag" name="tag" placeholder="Note tag">
+		    		<label for="notes">Notes</label>
+		    		<textarea id="note" ></textarea>
+		    	</div>
+		    	<button id="submit-note">Create</button>
+		    </form>
+	  	</div>
+	</div>
+
+	</div>
+</header>
+
+<main>
+	<aside id="aside">
+		<div class="list" id="list-0">
+			<div id="content-list-0">
+				<h1 class="heading-list" id="heading-list-0">10hours fasting everyday</h1>
+				<p class="con-prev" id="con-prev-0">incididunt et aliquip sint duise esse. Est duis ea dolor eiusmod ut elit incididunt inure risi duls alliquip anirs velit. Officia consectetur quis ea pariatur proident exercitation.</p>
+			</div>
+			<div class="base" id="base-list-0">
+				<span class="tag" id="tag-0">Travel</span>
+				<span class="time" id="time-0">12 hours ago</span>
+				<span class="base-action" id="action-0">...
+					<ul id="base-action-list">
+						<li>Edit</li>
+						<li>Delete</li>
+						<li>Print</li>
+						<li>Archive</li>
+					</ul>
+				</span>
+			</div>
+		</div>
+	</aside>
+	<section>
+		<h1 id="section-heading"></h1>
+		<p id="section-content"></p>
+	</section>
+</main>
+
+
+
+<script type="text/javascript" src="script2.js"></script>
+</body>
+</html>
+
+
+

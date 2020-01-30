@@ -83,6 +83,8 @@ aside .heading-list{
 aside .con-prev{
 	font-size: .8rem;
 	text-align: justify;
+	max-height: 60px;
+	overflow: hidden;
 	
 }
 .tag, .time, .base-action{

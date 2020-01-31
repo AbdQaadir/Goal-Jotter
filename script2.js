@@ -14,15 +14,22 @@ window.onclick = function(event) {
   }
 }
 
-// window.onload = function(){
+window.onload = function(){
 // var heading = document.querySelector('#heading-list-0').innerText;
 // 	var content = document.querySelector('#con-prev-0').innerText;
 // 	if (heading ){
 // 		document.querySelector('#section-heading').innerText = heading;
 // 	document.querySelector('#section-content').innerText = content;
 // 	}
+	// View notes on click from aside
+	controller.viewItems();
 
-// }
+	// Update the number of items on the navbar
+	controller.navbarUpdate();
+
+	// Side Action for editing
+	controller.sideActionFunction();
+}
 
 
 
@@ -52,7 +59,7 @@ return {
 		document.querySelector('#tag').value  = "";
 		document.querySelector('#note').value = "";
 	},
-	// SET CONTENTS TO ASIDE
+	// DETAILS OF ASIDE LISTS
 	setInput: function(){
 		return{
 			headingList: document.getElementById('heading-list-'),
@@ -67,8 +74,29 @@ return {
 			sectionHeading: document.querySelector('#section-heading'),
 			sectionContent: document.querySelector('#section-content')
 		}
+	},
+	// DETAILS OF NAV BAR SPAN
+	navBar: function(){
+		return{
+			noteCounter: document.querySelector('.notes-counter'),
+			todoCounter: document.querySelector('.todos-counter'),
+			archiveCounter: document.querySelector('.archives-counter'),
+			eventCounter: document.querySelector('.events-counter')			
+		}
+	},
+	
+	// RIGHT SIDE ACTIONS
+	rigthAction: function(){
+		return{
+			sideBtn: document.querySelector('.side-action'),
+			sideList: document.querySelector('#side-action-list'),
+			sideEdit: document.querySelector('.side-edit'),
+			sideDelete: document.querySelector('.side-delete'),
+			sidePrint: document.querySelector('.side-print'),
+			sideArchive: document.querySelector('.side-archive'),
+			
+		}
 	}
-
 }
 
 })();
@@ -132,24 +160,6 @@ var controller = (function(UIctrl, dataCtrl){
     var clearInput = function(){
     	UIctrl.clearInput();
     }
-    // Function to be called to display the clicked note from aside;
-    var displayNote = function(){
-    		console.log(this);
-			console.log('pressed')
-			console.log(this.id.length);
-			var idArray = this.id.split("");
-			var clickedID = idArray[5];
-			var mainView = UIctrl.mainView();
-
-			var secHeading = mainView.sectionHeading;
-			var secContent = mainView.sectionContent;
-			var prevHeading = document.querySelector('#heading-list-'+clickedID).innerText;
-			var prevContent = document.querySelector('#con-prev-'+clickedID).innerText;
-
-			secHeading.innerText = prevHeading;
-			secContent.innerText = prevContent;
-		}
-    
 
     // Add the new note to aside on formsubmit button clicked
 	subBtn.onclick = function (e){
@@ -157,15 +167,67 @@ var controller = (function(UIctrl, dataCtrl){
 		ctrlAddItem();
 		note_modal.style.display ="none";
 		clearInput();	
+		viewItem();
+		navbarUpdate();
 	}
 
 	
 // Display the exact list clicked on the interface
-	for (list of lists){
-		list.addEventListener('click', displayNote);
+	var viewItem = function(){
+		for (list of lists){
+			list.addEventListener('click', function(){
+				console.log(this);
+				console.log('pressed')
+				console.log(this.id.length);
+				var idArray = this.id.split("");
+				var clickedID = idArray[5];
+				var mainView = UIctrl.mainView();
+
+				var secHeading = mainView.sectionHeading;
+				var secContent = mainView.sectionContent;
+				var prevHeading = document.querySelector('#heading-list-'+clickedID).innerText;
+				var prevContent = document.querySelector('#con-prev-'+clickedID).innerText;
+
+				secHeading.innerText = prevHeading;
+				secContent.innerText = prevContent;
+			});
+		}	
+	}
+
+// Update the nav bar for number of notes
+	var navbarUpdate = function(){
+		var navbarClasses = UIctrl.navBar();
+		var noteNumber = navbarClasses.noteCounter;
+		noteNumber.innerText = lists.length;
+	}
+// Side Actions
+	var sideAction = function(){
+		var rigthAction = UIctrl.rigthAction();
+		var sideBtn = rigthAction.sideBtn;
+		var sideList = rigthAction.sideList;
+		var sideEdit = rigthAction.sideEdit;
+		var sideDelete = rigthAction.sideDelete;
+		var sidePrint = rigthAction.sidePrint;
+		var sideArchive = rigthAction.sideArchive;
+
+		sideBtn.onclick = function(){
+			sideList.classList.toggle('active');
+			sideList.classList.toggle('fadeIn');
+			console.log("Yeeess")
+		}
 	}
 	
-
+return{
+	viewItems: function(){
+		viewItem();
+	},
+	navbarUpdate: function(){
+		navbarUpdate();
+	},
+	sideActionFunction: function(){
+		sideAction();
+	}
+}
 
 
 })(UIcontroller, dataController);

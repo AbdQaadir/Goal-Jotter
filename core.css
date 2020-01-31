@@ -124,18 +124,18 @@ aside .base .base-action ul{
 }
 
 
-section{
+.container{
 	width: 60%;
 	min-height: 80vh;
 	background: white;
 	margin: 20px 0 0 30px ;
 	padding: 20px 40px;
 }
-section h1{
+.container h1{
 	font-size: 2rem;
 	text-transform: capitalize;
 }
-section p{
+.container p{
 	font-size: 1.1rem;
 }
 
@@ -283,4 +283,49 @@ form button:hover{
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+/*EDIT SIDE*/
+.edit-space{
+	width: 5%;
+	margin: 10px;
+	position: relative;
+}
+.side-action{
+	text-align: right !important;
+	background: #fff;
+	padding: 5px 10px;
+	border-radius: 8px;
+	color: #000000;
+	font-weight: 800;
+	letter-spacing: 4px;
+	cursor: pointer;
+	transition: .2s;
+}
+.side-action:hover{
+	color: #fff;
+	background: rgba(78, 152, 236, 0.12);
+}
+#side-action-list{
+	list-style-type: none;
+	position: absolute;
+	background: #fff;
+	padding: 2px;
+	display: none;
+	animation-time: 10s;
+
+}
+#side-action-list li{
+	padding: 10px 20px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: .2s;
+}
+#side-action-list li:hover{
+	color: blue;
+	background: rgba(78, 152, 236, 0.12);
+}
+.active{
+	display: block !important;
 }

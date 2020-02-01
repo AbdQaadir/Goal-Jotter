@@ -258,6 +258,9 @@ form button{
 	cursor: pointer;
 	transition: .3s;
 }
+form #submit-note-2{
+	display: none;
+}
 form button:hover{
 	color: blue;
 	background: #fff;
@@ -289,8 +292,9 @@ form button:hover{
 /*EDIT SIDE*/
 .edit-space{
 	width: 5%;
-	margin: 10px;
+	margin: 5rem auto;
 	position: relative;
+	/*display: none;*/
 }
 .side-action{
 	text-align: right !important;
@@ -313,7 +317,7 @@ form button:hover{
 	background: #fff;
 	padding: 2px;
 	display: none;
-	animation-time: 10s;
+
 
 }
 #side-action-list li{

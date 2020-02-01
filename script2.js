@@ -1,7 +1,7 @@
 
 var close = document.querySelector('.close');
 var note_modal = document.querySelector('#add-content');
-
+var editClicked = 0;
 close.onclick = function() {
   note_modal.style.display = "none";
 }
@@ -50,7 +50,9 @@ return {
 			title: document.querySelector('#title').value,
 			tag: document.querySelector('#tag').value,
 			note: document.querySelector('#note').value,
-			aside: document.querySelector('#aside')
+			aside: document.querySelector('#aside'),
+			createBtn: document.querySelector('#submit-note'),
+			createBtn2: document.querySelector('#submit-note-2'),
 		}
 	},
 	// CLEAR MODAL INPUT BOX
@@ -119,7 +121,9 @@ var controller = (function(UIctrl, dataCtrl){
 
 	// 2. Displays the modal to create a new note when the button is clicked
 	crtBtn.onclick = function(){
+		
 		note_modal.style.display ="block";
+		
 	}
 
 	// 3. Function to be called when the button on the modal is pressed to submit the form
@@ -181,6 +185,7 @@ var controller = (function(UIctrl, dataCtrl){
 				console.log(this.id.length);
 				var idArray = this.id.split("");
 				var clickedID = idArray[5];
+				editClicked = clickedID; //To be used in the side edit mode
 				var mainView = UIctrl.mainView();
 
 				var secHeading = mainView.sectionHeading;
@@ -190,8 +195,12 @@ var controller = (function(UIctrl, dataCtrl){
 
 				secHeading.innerText = prevHeading;
 				secContent.innerText = prevContent;
+
+				// Display the edit button at the side
+				UIctrl.rigthAction().sideBtn.style.display = "block";
+
 			});
-		}	
+		}
 	}
 
 // Update the nav bar for number of notes
@@ -201,6 +210,24 @@ var controller = (function(UIctrl, dataCtrl){
 		noteNumber.innerText = lists.length;
 	}
 // Side Actions
+	// Check if the main view is blank or not
+	var checkMainView = function(){
+		var rigthAction = UIctrl.rigthAction();
+		var sideBtn = rigthAction.sideBtn;
+		var sideList = rigthAction.sideList;
+		
+		var sasjk = UIctrl.mainView()
+		var sectionHeading = sasjk.sectionHeading.innerText;
+		var sectionContent = sasjk.sectionContent.innerText;
+
+		if (sectionHeading == "" || sectionHeading == null ){
+			sideBtn.style.display = "none";
+			// sideList.style.display = "none";
+		}
+		
+	}
+
+	
 	var sideAction = function(){
 		var rigthAction = UIctrl.rigthAction();
 		var sideBtn = rigthAction.sideBtn;
@@ -209,14 +236,51 @@ var controller = (function(UIctrl, dataCtrl){
 		var sideDelete = rigthAction.sideDelete;
 		var sidePrint = rigthAction.sidePrint;
 		var sideArchive = rigthAction.sideArchive;
+		var editBtn = UIctrl.getInput().editBtn
 
 		sideBtn.onclick = function(){
 			sideList.classList.toggle('active');
 			sideList.classList.toggle('fadeIn');
-			console.log("Yeeess")
+		}
+		sideEdit.onclick = function(){
+			note_modal.style.display = "block";
+			console.log(editClicked)
+
+	        document.querySelector('#tag').value = document.getElementById('tag-'+editClicked).innerText;
+	        document.querySelector('#title').value = document.getElementById('heading-list-'+editClicked).innerText;
+	        document.getElementById('note').value = document.getElementById('con-prev-'+editClicked).innerText;
+	        
+	        UIctrl.getInput().createBtn.style.display = "none";
+	        UIctrl.getInput().createBtn2.style.display = "block";
+		}
+
+		 UIctrl.getInput().createBtn2.onclick = function(e){
+		   	e.preventDefault();
+			document.getElementById('tag-'+editClicked).innerText = document.querySelector('#tag').value;
+	        document.getElementById('heading-list-'+editClicked).innerText = document.querySelector('#title').value;
+	        document.getElementById('con-prev-'+editClicked).innerText = document.getElementById('note').value;
+	        
+
+	        // Hide the modal
+	        note_modal.style.display = "none";
+	        // Clear input field
+	        UIctrl.clearInput();
+
+	        // Update the main view
+	        var mainView = UIctrl.mainView();
+
+			var secHeading = mainView.sectionHeading;
+			var secContent = mainView.sectionContent;
+			var prevHeading = document.querySelector('#heading-list-'+editClicked).innerText;
+			var prevContent = document.querySelector('#con-prev-'+editClicked).innerText;
+
+			secHeading.innerText = prevHeading;
+			secContent.innerText = prevContent;
+
 		}
 	}
-	
+
+
 return{
 	viewItems: function(){
 		viewItem();
@@ -226,9 +290,9 @@ return{
 	},
 	sideActionFunction: function(){
 		sideAction();
+		checkMainView();
 	}
 }
 
 
 })(UIcontroller, dataController);
-

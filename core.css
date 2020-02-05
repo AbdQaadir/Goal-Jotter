@@ -93,8 +93,8 @@ aside .con-prev{
 	margin: 0 10px;
 }
 aside .base .tag  {
-	width: 30%;
-	padding: 5px 10px;
+	width: 25%;
+	padding: 5px 7px;
 	background: rgba(78, 152, 236, 0.12);
 	border-radius: 20px;
 	font-size: .8rem;
@@ -102,11 +102,11 @@ aside .base .tag  {
 }
 aside .base .time  {
 	font-size: .8rem;
-	width: 30%;
+	width: 25%;
 	opacity: .4;
 }
 aside .base .base-action  {
-		position: relative;
+	position: relative;
 
 }
 aside .base .base-action ul{
@@ -118,13 +118,26 @@ aside .base .base-action ul{
 	list-style-type: none;
 	cursor: pointer;
 	box-shadow: 1px 1px 2px blue;
-	padding: 10px;
+	padding: 0;
 }
 .base-action ul li{
 	cursor: pointer;
-	padding: 3px;
+	padding: 10px;
+}
+.base-action ul li:hover{
+	background: rgba(78, 152, 236, 0.12);
+	color: blue;
 }
 
+.base-click{
+	background: rgba(0, 0, 0, 0.12);
+	padding: 2px 2px;
+	color: #000;
+	font-weight: 700;
+	cursor: pointer;
+	transition: .2s;
+	border-radius: 3px;
+}
 
 .container{
 	width: 60%;
@@ -145,7 +158,7 @@ aside .base .base-action ul{
 /*LOGIN AND SIGN UP MODAL*/
 
 /* The Modal (background) */
-#add-content {
+#add-content, #delete-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -160,7 +173,7 @@ aside .base .base-action ul{
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modal-content, .delete-modal-content {
   background-color: #fff;
   margin: 5% auto; /* 15% from the top and centered */
   padding: 20px;
@@ -274,17 +287,54 @@ form button:hover{
 	text-decoration: none;
 	font-weight: bold;
 }
-
-
+/*MODAL DELETE*/
+	.del-buttons{
+		display: flex;
+	}
+	.delete-modal-content {
+	  background-color: #fff;
+	  margin: 15% auto; /* 15% from the top and centered */
+	  padding: 20px;
+	  border: 1px solid #888;
+	  width: 400px; /* Could be more or less, depending on screen size */
+	  text-align: center;
+	}
+	.delete-modal-content h3{
+		font-size: .9rem;
+	}
+	#confirm-delete, #donot-delete{
+	text-align: center;
+	display: block;
+	margin: 20px auto;
+	border: .4px solid grey;
+	border-radius: 20px;
+	padding: 10px 20px;
+	text-decoration: none;
+	width: 40%;
+	font-size: .9rem;
+	cursor: pointer;
+	transition: .3s;
+	outline: none;
+	box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+	font-weight: 600;
+	}
+	#donot-delete{
+	background: #fff;
+	color: black;
+	}
+	#confirm-delete{
+	background: rgba(179, 8, 4, .4);
+	color: darkred;
+	}
 /* The Close Button */
-.close, .close {
+.close, .close, .delete-close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover, .close:focus {
+.close:hover, .close:focus, .delete-close:hover {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -299,13 +349,13 @@ form button:hover{
 	/*display: none;*/
 }
 .side-action{
-	text-align: right !important;
+	text-align: center !important;
 	background: #fff;
-	padding: 5px 10px;
-	border-radius: 8px;
+	padding: 4px;
+	border-radius: 10px;
 	color: #000000;
-	font-weight: 800;
-	letter-spacing: 4px;
+	font-weight: 900;
+	letter-spacing: 5px;
 	cursor: pointer;
 	transition: .2s;
 }

@@ -1,12 +1,13 @@
-
 var close = document.querySelector('.close');
+var delClose = document.querySelector('.delete-close');
 var note_modal = document.querySelector('#add-content');
 var editClicked = 0;
 close.onclick = function() {
   note_modal.style.display = "none";
 }
-
-
+delClose.onclick = function(){
+	document.querySelector('#delete-modal').style.display = "none";
+}
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == note_modal) {
@@ -14,30 +15,49 @@ window.onclick = function(event) {
   }
 }
 
-window.onload = function(){
-// var heading = document.querySelector('#heading-list-0').innerText;
-// 	var content = document.querySelector('#con-prev-0').innerText;
-// 	if (heading ){
-// 		document.querySelector('#section-heading').innerText = heading;
-// 	document.querySelector('#section-content').innerText = content;
-// 	}
-	// View notes on click from aside
-	controller.viewItems();
-
-	// Update the number of items on the navbar
-	controller.navbarUpdate();
-
-	// Side Action for editing
-	controller.sideActionFunction();
-}
-
-
-
 // CLOSE THE MODAL
 
 
-
 // CORE FUNCTIONALITY
+
+// DATA CONTROLLER
+var dataController = (function(){
+
+	// var Note = function(id, note, tag){
+	// 	this.id = id;
+	// 	this.note = note;
+	// 	this.tag = tag;
+
+	// }
+
+	// var data = {
+	// 	notes = [],
+	// 	totals: []
+	// }
+	// return{
+	// 	 addItem: function(type, notes, tag){
+ //            var newItem, ID;
+
+ //            ID = data.allItem[type][data.allItem[type].length -1].id + 1;
+
+ //            if (type === "exp"){
+ //                newItem =new Expense(ID, des, val);
+ //            } else if(type === "inc"){
+ //            newItem =new Income(ID, des, val);
+ //            }
+
+ //            data.allItem[type].push(newItem);
+ //            return newItem;
+ //            ID++;
+
+	// }
+})();
+
+
+
+
+
+
 
 // UICONTROLLER
 var UIcontroller = (function(){
@@ -103,10 +123,6 @@ return {
 
 })();
 
-// DATA CONTROLLER
-var dataController = (function(){
-
-})();
 
 
 // GLOBAL CONTROLLER
@@ -116,14 +132,15 @@ var controller = (function(UIctrl, dataCtrl){
 	var inputCounter = lists.length - 1;
 	// 1. Get the input field
 	var crtBtn = document.querySelector('.create-button');
-	var subBtn = document.querySelector('#submit-note');
+	var subBtn = UIctrl.getInput().createBtn;
 	var note_modal = document.querySelector('#add-content');
 
 	// 2. Displays the modal to create a new note when the button is clicked
 	crtBtn.onclick = function(){
-		
 		note_modal.style.display ="block";
-		
+		UIctrl.getInput().createBtn.style.display = "block";
+	    UIctrl.getInput().createBtn2.style.display = "none";
+		// document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
 	}
 
 	// 3. Function to be called when the button on the modal is pressed to submit the form
@@ -136,26 +153,30 @@ var controller = (function(UIctrl, dataCtrl){
         inputCounter++;
         var newNote = inputNote
         console.log(newNote);
+        var timePosted = new Date();
+		var time = timePosted.getHours() + ":" + timePosted.getMinutes() + ":" + timePosted.getSeconds();
+		console.log(time);
 
 
 
         // 2. Add the item to the Aside preview
-     	input.aside.innerHTML += `<div class='list' id='list-${inputCounter}'>
+		input.aside.innerHTML += `<div class="list" id='list-${inputCounter}'>
 			<div id='content-list-${inputCounter}'>
 				<h1 class='heading-list' id='heading-list-${inputCounter}'>${inputTitle}</h1>
-				<p class='con-prev' id='con-prev-${inputCounter}'>${newNote}</p>
+				<p class="con-prev" id="con-prev-${inputCounter}">${newNote}</p>
 			</div>
-			<div class='base' id='base-list-${inputCounter}'>
-				<span class='tag' id='tag-${inputCounter}'>${inputTag}</span>
-				<span class='time' id='time-${inputCounter}'>12 hours ago</span>
-				<span class='base-action' id='action-${inputCounter}'>...
-					<ul id='base-action-list'>
-						<li>Edit</li>
-						<li>Delete</li>
-						<li>Print</li>
-						<li>Archive</li>
+			<div class="base" id='base-list-${inputCounter}'>
+				<span class="tag" id='tag-${inputCounter}'>${inputTag}</span>
+				<span class="time" id='time-${inputCounter}'>12 hours ago</span>
+				<div class="base-action" id="action-0">
+					<span class="base-click" id='action-${inputCounter}'>...</span>
+					<ul id="base-action-list-${inputCounter}">
+						<li class="base-edit">Edit</li>
+						<li class="base-delete">Delete</li>
+						<li class="base-print">Print</li>
+						<li class="base-archive">Archive</li>
 					</ul>
-				</span>
+				</div>
 			</div>
 		</div>`
 
@@ -180,6 +201,7 @@ var controller = (function(UIctrl, dataCtrl){
 	var viewItem = function(){
 		for (list of lists){
 			list.addEventListener('click', function(){
+
 				console.log(this);
 				console.log('pressed')
 				console.log(this.id.length);
@@ -197,7 +219,10 @@ var controller = (function(UIctrl, dataCtrl){
 				secContent.innerText = prevContent;
 
 				// Display the edit button at the side
+				document.querySelector('.edit-space').style.display = "block"
 				UIctrl.rigthAction().sideBtn.style.display = "block";
+				document.querySelector('#side-action-list').classList.remove("active")
+
 
 			});
 		}
@@ -215,6 +240,7 @@ var controller = (function(UIctrl, dataCtrl){
 		var rigthAction = UIctrl.rigthAction();
 		var sideBtn = rigthAction.sideBtn;
 		var sideList = rigthAction.sideList;
+		var sideDelete = rigthAction.sideDelete;
 		
 		var sasjk = UIctrl.mainView()
 		var sectionHeading = sasjk.sectionHeading.innerText;
@@ -236,11 +262,19 @@ var controller = (function(UIctrl, dataCtrl){
 		var sideDelete = rigthAction.sideDelete;
 		var sidePrint = rigthAction.sidePrint;
 		var sideArchive = rigthAction.sideArchive;
-		var editBtn = UIctrl.getInput().editBtn
+		var jeditBtn = UIctrl.getInput().editBtn
+		var aside = UIctrl.getInput().aside
 
 		sideBtn.onclick = function(){
 			sideList.classList.toggle('active');
 			sideList.classList.toggle('fadeIn');
+			window.onclick = function(event) {
+				console.log(event.target);
+			  // if (event.target == window) {
+			  //   document.querySelector('.side-action-list').style.display = "none";
+			  //   console.log("Done");
+			  // }
+			}
 		}
 		sideEdit.onclick = function(){
 			note_modal.style.display = "block";
@@ -278,21 +312,88 @@ var controller = (function(UIctrl, dataCtrl){
 			secContent.innerText = prevContent;
 
 		}
+		sideDelete.onclick = function(){
+			var mainView = UIctrl.mainView();
+			// var confirm = window.confirm("Are you sure you want to delete this note?");
+			document.querySelector("#delete-modal").style.display = "block";
+			document.querySelector('#confirm-delete').onclick = function(){
+					document.getElementById('list-'+editClicked).remove();
+					mainView.sectionHeading.innerText = ""
+					mainView.sectionContent.innerText = ""
+					console.log(confirm);
+					document.querySelector('.edit-space').style.display = "none";
+					document.querySelector("#delete-modal").style.display = "none";
+					navbarUpdate();
+			}
+			document.querySelector('#donot-delete').onclick = function(){
+					document.querySelector("#delete-modal").style.display = "none";
+					document.querySelector('#side-action-list').classList.toggle("active");
+			}
+		}
 	}
 
+	var baseAction = function(){
+		var baseClick = document.querySelector(".base-click")
+		var baseEdit = document.querySelector(".base-edit")
+		var baseDelete = document.querySelector(".base-delete")
+		var basePrint = document.querySelector(".base-print")
+		var baseArchive = document.querySelector(".base-archive")
+
+		baseClick.onclick = function(e){
+			e.preventDefault();
+			var editClicked = this.id.split("")[11]
+			console.log(editClicked);
+			document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
+			
+
+			baseEdit.onclick = function(){
+				note_modal.style.display = "block";
+				console.log(editClicked)
+
+		        document.querySelector('#tag').value = document.getElementById('tag-'+editClicked).innerText;
+		        document.querySelector('#title').value = document.getElementById('heading-list-'+editClicked).innerText;
+		        document.getElementById('note').value = document.getElementById('con-prev-'+editClicked).innerText;
+		        
+		        UIctrl.getInput().createBtn.style.display = "none";
+		        UIctrl.getInput().createBtn2.style.display = "block";
+		        document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
+			}
+
+
+			baseDelete.onclick = function(e){
+				e.preventDefault();
+				var mainView = UIctrl.mainView();
+				// var confirm = window.confirm("Are you sure you want to delete this note?");
+				document.querySelector("#delete-modal").style.display = "block";
+				document.querySelector('#confirm-delete').onclick = function(){
+						document.getElementById('list-'+editClicked).remove();
+						mainView.sectionHeading.innerText = ""
+						mainView.sectionContent.innerText = ""
+						console.log(confirm);
+						document.querySelector("#delete-modal").style.display = "none";
+						navbarUpdate();
+				}
+				document.querySelector('#donot-delete').onclick = function(){
+						document.querySelector("#delete-modal").style.display = "none";
+						document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
+				}
+
+			}
+		}
+	}
 
 return{
-	viewItems: function(){
+	init: function(){
 		viewItem();
-	},
-	navbarUpdate: function(){
 		navbarUpdate();
-	},
-	sideActionFunction: function(){
 		sideAction();
 		checkMainView();
+		baseAction();
 	}
 }
 
 
 })(UIcontroller, dataController);
+
+
+controller.init();

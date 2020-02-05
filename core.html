@@ -32,32 +32,32 @@
 
 		<!-- MODAL FOR ADDING CONTENT -->
 		<div id="add-content" class="modal animated fadeIn fast">
-	 	<div class="modal-content">
-		    <span class="close">&times;</span>
-		    <header>
-			    <h3>Write your note</h3>
-			 </header>
-		    <form action="" method="post" id="signup-form">
-		    	<div>
-		    		<label for="title">Title</label>
-		    		<input type="text" id="title" name="title" placeholder="Note title">
-		    		<label for="tag">Tag</label>
-		    		<input type="text" id="tag" name="tag" placeholder="Note tag">
-		    		<label for="notes">Notes</label>
-		    		<textarea id="note" ></textarea>
-		    	</div>
-		    	<button id="submit-note">Create</button>
-		    	<button id="submit-note-2">Save Changes</button>
-		    </form>
-	  	</div>
-	</div>
+		 	<div class="modal-content">
+			    <span class="close">&times;</span>
+			    <header>
+				    <h3>Write your note</h3>
+				 </header>
+			    <form action="" method="post" id="signup-form">
+			    	<div>
+			    		<label for="title">Title</label>
+			    		<input type="text" id="title" name="title" placeholder="Note title">
+			    		<label for="tag">Tag</label>
+			    		<input type="text" id="tag" name="tag" placeholder="Note tag">
+			    		<label for="notes">Notes</label>
+			    		<textarea id="note" ></textarea>
+			    	</div>
+			    	<button id="submit-note">Create</button>
+			    	<button id="submit-note-2">Save Changes</button>
+			    </form>
+		  	</div>
+		</div>
 
 	</div>
 </header>
 
 <main>
 	<aside id="aside">
-		<!-- <div class="list" id="list-0">
+		<div class="list" id="list-0">
 			<div id="content-list-0">
 				<h1 class="heading-list" id="heading-list-0">10hours fasting everyday</h1>
 				<p class="con-prev" id="con-prev-0">incididunt et aliquip sint duise esse. Est duis ea dolor eiusmod ut elit incididunt inure risi duls alliquip anirs velit. Officia consectetur quis ea pariatur proident exercitation.</p>
@@ -65,17 +65,18 @@
 			<div class="base" id="base-list-0">
 				<span class="tag" id="tag-0">Travel</span>
 				<span class="time" id="time-0">12 hours ago</span>
-				<span class="base-action" id="action-0">...
-					<ul id="base-action-list">
-						<li>Edit</li>
-						<li>Delete</li>
-						<li>Print</li>
-						<li>Archive</li>
+				<span class="base-action" id="action-0">
+					<span class="base-click" id="base-click-0">---</span>
+					<ul id="base-action-list-0">
+						<li class="base-edit">Edit</li>
+						<li class="base-delete">Delete</li>
+						<li class="base-print">Print</li>
+						<li class="base-archive">Archive</li>
 					</ul>
 				</span>
 			</div>
 		</div>
-
+<!-- 
 		<div class="list" id="list-1">
 			<div id="content-list-1">
 				<h1 class="heading-list" id="heading-list-1">Piano playing is haram</h1>
@@ -120,7 +121,7 @@
 	</section>
 
 	<section class="edit-space">
-		<span class="side-action" id="">---</span>
+		<span class="side-action">---</span>
 		<ul id="side-action-list" class="animated fast">
 			<li class="side-edit">Edit</li>
 			<li class="side-delete">Delete</li>
@@ -130,6 +131,19 @@
 	</section>
 </main>
 
+	<!-- MODAL FOR CONFIRMING DELETION -->
+		<div id="delete-modal" class="modal animated fadeIn fast">
+		 	<div class="delete-modal-content">
+			    <span class="delete-close">&times;</span>
+			    <header>
+				    <h3>Are you sure you want to delete this Note?</h3>
+				 </header>
+				 <div class="del-buttons">
+					 <button id="donot-delete">Cancel</button>
+			    	<button id="confirm-delete">Delete</button>
+			    </div>
+		  	</div>
+		</div>
 
 
 <script type="text/javascript" src="script2.js"></script>

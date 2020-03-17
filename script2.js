@@ -140,6 +140,7 @@ var controller = (function(UIctrl, dataCtrl){
 		note_modal.style.display ="block";
 		UIctrl.getInput().createBtn.style.display = "block";
 	    UIctrl.getInput().createBtn2.style.display = "none";
+	    document.querySelector('.note-modal-heading').innerText = "Write your note";
 		// document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
 	}
 
@@ -221,7 +222,7 @@ var controller = (function(UIctrl, dataCtrl){
 				// Display the edit button at the side
 				document.querySelector('.edit-space').style.display = "block"
 				UIctrl.rigthAction().sideBtn.style.display = "block";
-				document.querySelector('#side-action-list').classList.remove("active")
+				// document.querySelector('#side-action-list').classList.remove("active")
 
 
 			});
@@ -283,6 +284,7 @@ var controller = (function(UIctrl, dataCtrl){
 	        document.querySelector('#tag').value = document.getElementById('tag-'+editClicked).innerText;
 	        document.querySelector('#title').value = document.getElementById('heading-list-'+editClicked).innerText;
 	        document.getElementById('note').value = document.getElementById('con-prev-'+editClicked).innerText;
+	        document.querySelector('.note-modal-heading').innerText = "Edit Note";
 	        
 	        UIctrl.getInput().createBtn.style.display = "none";
 	        UIctrl.getInput().createBtn2.style.display = "block";
@@ -324,6 +326,7 @@ var controller = (function(UIctrl, dataCtrl){
 					document.querySelector('.edit-space').style.display = "none";
 					document.querySelector("#delete-modal").style.display = "none";
 					navbarUpdate();
+
 			}
 			document.querySelector('#donot-delete').onclick = function(){
 					document.querySelector("#delete-modal").style.display = "none";
@@ -333,51 +336,56 @@ var controller = (function(UIctrl, dataCtrl){
 	}
 
 	var baseAction = function(){
-		var baseClick = document.querySelector(".base-click")
-		var baseEdit = document.querySelector(".base-edit")
-		var baseDelete = document.querySelector(".base-delete")
-		var basePrint = document.querySelector(".base-print")
-		var baseArchive = document.querySelector(".base-archive")
+		var baseClick = document.getElementsByClassName("base-click")
+	
 
-		baseClick.onclick = function(e){
-			e.preventDefault();
-			var editClicked = this.id.split("")[11]
-			console.log(editClicked);
-			document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
-			
-
-			baseEdit.onclick = function(){
-				note_modal.style.display = "block";
-				console.log(editClicked)
-
-		        document.querySelector('#tag').value = document.getElementById('tag-'+editClicked).innerText;
-		        document.querySelector('#title').value = document.getElementById('heading-list-'+editClicked).innerText;
-		        document.getElementById('note').value = document.getElementById('con-prev-'+editClicked).innerText;
-		        
-		        UIctrl.getInput().createBtn.style.display = "none";
-		        UIctrl.getInput().createBtn2.style.display = "block";
-		        document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
-			}
-
-
-			baseDelete.onclick = function(e){
+		for (base of baseClick){
+			console.log(base.id)
+			base.onclick = function(e){
+				console.log(this)
 				e.preventDefault();
-				var mainView = UIctrl.mainView();
-				// var confirm = window.confirm("Are you sure you want to delete this note?");
-				document.querySelector("#delete-modal").style.display = "block";
-				document.querySelector('#confirm-delete').onclick = function(){
+				var editClicked = this.id.split("")[11]
+				var baseEdit = document.querySelector(".base-edit-"+editClicked)
+				var baseDelete = document.querySelector(".base-delete-"+editClicked)
+				var basePrint = document.querySelector(".base-print-"+editClicked)
+				var baseArchive = document.querySelector(".base-archive-"+editClicked)
+				console.log(editClicked);
+				document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
+				
+				baseEdit.onclick = function(){
+					note_modal.style.display = "block";
+					console.log(editClicked)
+
+			        document.querySelector('#tag').value = document.getElementById('tag-'+editClicked).innerText;
+			        document.querySelector('#title').value = document.getElementById('heading-list-'+editClicked).innerText;
+			        document.getElementById('note').value = document.getElementById('con-prev-'+editClicked).innerText;
+			        document.querySelector('.note-modal-heading').innerText = "Edit note";
+			        
+			        UIctrl.getInput().createBtn.style.display = "none";
+			        UIctrl.getInput().createBtn2.style.display = "block";
+			        document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
+				}
+
+				baseDelete.onclick = function(e){
+					e.preventDefault();
+					var mainView = UIctrl.mainView();
+					// var confirm = window.confirm("Are you sure you want to delete this note?");
+					document.querySelector("#delete-modal").style.display = "block";
+					document.querySelector('#confirm-delete').onclick = function(){
 						document.getElementById('list-'+editClicked).remove();
 						mainView.sectionHeading.innerText = ""
 						mainView.sectionContent.innerText = ""
 						console.log(confirm);
 						document.querySelector("#delete-modal").style.display = "none";
 						navbarUpdate();
+						document.querySelector('.edit-space').style.display = "none";
+					}
+					document.querySelector('#donot-delete').onclick = function(){
+							document.querySelector('.edit-space').style.display = "block"
+							document.querySelector("#delete-modal").style.display = "none";
+							document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
+					}
 				}
-				document.querySelector('#donot-delete').onclick = function(){
-						document.querySelector("#delete-modal").style.display = "none";
-						document.querySelector("#base-action-list-"+editClicked).classList.toggle("active");
-				}
-
 			}
 		}
 	}

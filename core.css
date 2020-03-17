@@ -97,11 +97,11 @@ aside .base .tag  {
 	padding: 5px 7px;
 	background: rgba(78, 152, 236, 0.12);
 	border-radius: 20px;
-	font-size: .8rem;
+	font-size: .65rem;
 	font-weight: bold;
 }
 aside .base .time  {
-	font-size: .8rem;
+	font-size: .65rem;
 	width: 25%;
 	opacity: .4;
 }
@@ -131,9 +131,9 @@ aside .base .base-action ul{
 
 .base-click{
 	background: rgba(0, 0, 0, 0.12);
-	padding: 2px 2px;
+	padding: 1px 5px;
 	color: #000;
-	font-weight: 700;
+	font-weight: 800;
 	cursor: pointer;
 	transition: .2s;
 	border-radius: 3px;
@@ -175,7 +175,7 @@ aside .base .base-action ul{
 /* Modal Content/Box */
 .modal-content, .delete-modal-content {
   background-color: #fff;
-  margin: 5% auto; /* 15% from the top and centered */
+  margin: 10% auto !important; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 300px; /* Could be more or less, depending on screen size */
